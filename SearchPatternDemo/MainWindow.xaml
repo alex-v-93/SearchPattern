@@ -1,0 +1,22 @@
+﻿<Window x:Class="SearchPatternDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SearchPatternDemo"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="342.461" Width="543.307" Cursor="{Binding Cursor}">
+    <Grid>
+        <Button x:Name="button" Content="Добавить записи..." Command="{Binding AddCommand}" Margin="0,7,10,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="116"/>
+        <TextBox x:Name="textBox" Height="23" Margin="160,10,131,0" TextWrapping="Wrap" Text="{Binding Pattern, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Pattern}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <Label x:Name="label" Content="Введите шаблон поиска:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="145"/>
+        <ListBox x:Name="listBox" ItemsSource="{Binding Result}" Margin="0,41,0,0"/>
+    </Grid>
+</Window>
