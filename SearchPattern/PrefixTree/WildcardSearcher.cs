@@ -4,19 +4,19 @@ namespace SearchPattern.PrefixTree
 {
     internal class WildcardSearcher : IWildcardSearcher
     {
-        private readonly NodeRoot _prefixThree;
+        private readonly NodeRoot _prefixTree;
         internal WildcardSearcher()
         {
-            _prefixThree = new NodeRoot();
+            _prefixTree = new NodeRoot();
         }
         public void AddWord(string word)
         {
-            _prefixThree.AddWord(word);
+            _prefixTree.AddWord(word);
         }
 
         public IEnumerable<string> SearchWords(string pattern)
         {
-            return _prefixThree.SearchWords(pattern);
+            return _prefixTree.SearchWords(pattern);
         }
     }
 }
